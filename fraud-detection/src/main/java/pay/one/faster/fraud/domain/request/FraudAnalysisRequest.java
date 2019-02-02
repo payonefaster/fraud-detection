@@ -12,4 +12,6 @@ public class FraudAnalysisRequest {
 
   private Customer id;
 
+  private AnalysisType type;
+
 }
