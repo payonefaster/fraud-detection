@@ -29,20 +29,12 @@ public class HttpCustomerRepository implements CustomerRepository {
   public Mono<CustomerData> customerData(String id, OpenTracingHeaders headers) {
     final WebClient web = this.webClient.mutate().baseUrl(this.customerSvc).build();
     final RequestHeadersSpec<?> spec = web.get().uri("/api/customers/{id}", id);
-
-    openTracing(spec);
-
-
-    return null;
+    openTracing(spec,headers);
+    return spec.retrieve().bodyToMono(CustomerData.class);
   }
 
-
-  private RequestHeadersSpec<?> openTracing(RequestHeadersSpec<?> spec){
-
-
-    return spec;
+  private void openTracing(RequestHeadersSpec<?> spec,OpenTracingHeaders headers){
+    headers.getOptions().forEach(header -> spec.header(header,headers.headerValue(header)));
   }
-
-
 
 }

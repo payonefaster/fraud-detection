@@ -10,6 +10,29 @@ public class FraudAnalysisRequest {
 
   private Order order;
 
-  private Customer id;
+  private Customer customer;
 
+  public void setPlace(Place place) {
+    this.place = place;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  public Place getPlace() {
+    return place;
+  }
+
+  public Order getOrder() {
+    return order;
+  }
+
+  public Customer getCustomer() {
+    return customer;
+  }
 }

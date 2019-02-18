@@ -7,7 +7,7 @@ import java.util.Map;
 /** @author claudioed on 2019-02-17. Project fraud-detection */
 public class OpenTracingHeaders {
 
-  private final List<String> options =
+  public static final List<String> options =
       List.of(
           "x-request-id",
           "x-b3-traceid",
@@ -24,8 +24,12 @@ public class OpenTracingHeaders {
     return this;
   }
 
-  public Map<String, String> getHeaders() {
-    return headers;
+  public String headerValue(String header){
+    return this.headers.getOrDefault(header,"");
+  }
+
+  public List<String> getOptions() {
+    return options;
   }
 
 }
